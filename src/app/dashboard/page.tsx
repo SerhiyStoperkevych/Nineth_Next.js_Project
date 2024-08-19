@@ -1,7 +1,7 @@
+"use client";
+
 import { useSession } from 'next-auth/react';
-import TaskList from '../components/TaskList';
-import ProjectList from '../components/ProjectList';
-import GoalList from '../components/GoalList';
+import Link from 'next/link';
 
 export default function Dashboard() {
 
@@ -18,9 +18,11 @@ export default function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-            <TaskList/>
-            <ProjectList/>
-            <GoalList/>
+            <div>
+                <Link href={'/task'}>TaskList</Link>
+                <Link href={'/project'}>ProjectList</Link>
+                <Link href={'/goal'}>GoalList</Link>
+            </div>
         </div>
     )
 }

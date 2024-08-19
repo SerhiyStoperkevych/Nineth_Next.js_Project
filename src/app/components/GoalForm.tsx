@@ -1,42 +1,57 @@
-'user client';
+'use client';
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-export default function GoalForm({ addGoal }: { addGoal: (goal: any) => void }) {
+interface GoalFormProps {
+    addGoal: (goal: Omit<Goal, '_id'>) => void;
+}
 
+interface Goal {
+    _id: string;
+    name: string;
+    description: string;
+    targetDate: Date;
+}
+
+export default function GoalForm({ addGoal }: GoalFormProps) {
     const [name, setName] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [targetDate, setTargetDate] = useState<string>('');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        addGoal({ name, description, targetDate });
+        const newGoal = {
+            name,
+            description,
+            targetDate: new Date(targetDate) // Convert string to Date object
+        };
+        addGoal(newGoal);
         setTargetDate('');
         setName('');
         setDescription('');
     };
 
     return (
-        <form onSubmit={handleSubmit} >
-            <input 
-                type="text" 
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder='Name...'
                 required
             />
-            <input 
+            <input
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder='Description...'
             />
-            <input 
+            <input
                 type="date"
                 value={targetDate}
                 onChange={(e) => setTargetDate(e.target.value)}
             />
             <button type='submit'>Add Goal</button>
         </form>
-    )
+    );
 }
