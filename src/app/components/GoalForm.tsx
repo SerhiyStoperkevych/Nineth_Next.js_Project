@@ -32,26 +32,43 @@ export default function GoalForm({ addGoal }: GoalFormProps) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder='Name...'
-                required
-            />
-            <input
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder='Description...'
-            />
-            <input
-                type="date"
-                value={targetDate}
-                onChange={(e) => setTargetDate(e.target.value)}
-            />
-            <button type='submit'>Add Goal</button>
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 bg-purple-600 w-100 p-6 rounded-lg shadow-lg">
+            <h1 className="text-2xl font-semibold mb-4 text-white">Goal Form</h1>
+            <div>
+                <label htmlFor="" className="font-medium text-white"></label>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="border border-gray-300 p-2 rounded"
+                    placeholder='Name...'
+                    required
+                />
+            </div>
+            <div>
+                <label htmlFor="" className="font-medium text-white"></label>
+                <input
+                    type="text"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    className="border border-gray-300 p-2 rounded"
+                    placeholder='Description...'
+                />
+            </div>
+            <div>
+                <label htmlFor="" className="font-medium text-white"></label>
+                <input
+                    type="date"
+                    value={targetDate}
+                    onChange={(e) => setTargetDate(e.target.value)}
+                    className="border border-gray-300 p-2 rounded"
+                />
+            </div>
+            <button type='submit' className="text-white bg-purple-800 rounded-lg shadow-lg py-2 px-4 
+                     hover:ring-4 hover:ring-violet-500 hover:bg-purple-600 
+                     transform transition-all duration-300 ease-out hover:scale-105
+                     focus:outline-none focus:ring-4 focus:ring-violet-500 focus:ring-opacity-50"
+            >Add Goal</button>
         </form>
     );
 }

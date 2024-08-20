@@ -21,16 +21,28 @@ export default function TaskList() {
   };
 
   return (
-    <div>
-      <h2>Task List</h2>
+    <div className='flex flex-col justify-center items-center'>
+      <h2 className='text-white text-2xl mb-4 font-bold'>Task List</h2>
       <TaskForm addTask={addTask} />
-      <ul>
+      <ul className="m-4 space-y-4 text-white">
         {tasks.map((task) => (
-          <li key={task._id}>
-            <h1>{task.title}</h1>
-            <h2>{task.priority}</h2>
-            <h3>{new Date(task.dueDate).toDateString()}</h3>
-            <p>{task.description}</p>
+          <li key={task._id} className="bg-teal-700 p-6 shadow-lg rounded-lg hover:bg-teal-600 transition-colors duration-3006">
+            <div className="mb-4">
+              <label htmlFor="" className="block text-sm font-semibold">Title:</label>
+              <h1 className="block text-sm font-semibold">{task.title}</h1>
+            </div>
+            <div className="mb-4">
+              <label htmlFor="" className="block text-sm font-semibold">Priority:</label>
+              <h2 className="block text-sm font-semibold">{task.priority}</h2>
+            </div>
+            <div className="mb-4">
+              <label htmlFor="" className="block text-sm font-semibold">DueDate:</label>
+              <h3 className="block text-sm font-semibold">{new Date(task.dueDate).toDateString()}</h3>
+            </div>
+            <div>
+              <label htmlFor="" className="block text-sm font-semibold">Description:</label>
+              <p className="text-gray-200">{task.description}</p>
+            </div>
           </li>
         ))}
       </ul>

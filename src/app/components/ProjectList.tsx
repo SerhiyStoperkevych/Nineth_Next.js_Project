@@ -19,14 +19,20 @@ export default function ProjectList() {
   };
 
   return (
-    <div>
-      <h2>Projects</h2>
+    <div className='flex flex-col justify-center items-center'>
+      <h1 className='text-white text-2xl mb-4 font-bold'>Projects</h1>
       <ProjectForm addProject={addProject} />
-      <ul>
+      <ul className="m-4 space-y-4 text-white">
         {projects.map((project) => (
-          <li key={project._id}>
-            <h1>{project.name}</h1>
-            <p>{project.description}</p>
+          <li key={project._id} className="bg-teal-700 p-6 shadow-lg rounded-lg hover:bg-teal-600 transition-colors duration-300">
+            <div className="mb-4">
+              <label htmlFor="" className="block text-sm font-semibold">Name:</label>
+              <h1 className="text-xl font-bold">{project.name}</h1>
+            </div>
+            <div>
+              <label htmlFor="" className="block text-sm font-semibold">Description:</label>
+              <p className="text-gray-200">{project.description}</p>
+            </div>
           </li>
         ))}
       </ul>

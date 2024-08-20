@@ -12,7 +12,7 @@ export default function RootLayout({
       <body>
         <SessionProviderWrapper>
           <Navbar/>
-          <main className="container mx-auto p-4">
+          <main className="container mx-auto p-4 min-h-screen max-w-full bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
             {children}
           </main>
         </SessionProviderWrapper>
